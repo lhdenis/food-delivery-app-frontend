@@ -32,7 +32,7 @@ tools {
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           sh 'docker build -t lhdenis35/frontend:${VERSION} .'
-          sh 'docker push lhdenis35/food-delivery-app-fe:${VERSION}'
+          sh 'docker push lhdenis35/frontend:${VERSION}'
       }
     }
 
@@ -45,11 +45,11 @@ tools {
 
      stage('Update Image Tag in GitOps') {
       steps {
-         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'git-ssh', url: 'git@github.com:lhdenis/deployment-folder.git']])
+         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'git-ssh', url: 'git@github.com:lhdenis/food-delivery-app-frontend.git']])
         script {
           // Set the new image tag with the Jenkins build number
        sh '''
-          sed -i "s/image:.*/image: lhdenis35\\/food-delivery-app-fe:${VERSION}/" aws/angular-manifest.yml
+          sed -i "s/image:.*/image: lhdenis35\\/frontend:${VERSION}/" aws/angular-manifest.yml
         '''
 
           sh 'git checkout master'
