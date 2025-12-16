@@ -64,6 +64,12 @@ tools {
     }
   }
 
+  post {
+    always {
+      cleanWs()              // nettoie le workspace proprement
+      sh 'docker builder prune -af || true'   // libère le cache buildkit (optionnel)
+    }
+  }
 }
 
 
