@@ -1,0 +1,1 @@
+{"ast":null,"code":"// export const API_URL_RL ='http://localhost:9091';\n// export const API_URL_Order ='http://localhost:9094';\n// export const API_URL_FC ='http://localhost:9092';\n// export const API_URL_UD ='http://localhost:9093';\nexport const K8ExternalIp = 'http://108.142.29.242';","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
